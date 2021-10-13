@@ -148,18 +148,30 @@ function Baby(name, age, favoriteToy) {
  Person.call(this, name, age);
  this.favoriteToy = favoriteToy;
 }
+
+Baby.prototype = Object.create(Person.prototype);
+
 Baby.prototype.play= function(favoriteToy){
-  return `Playing with ${this.favoriteToy}`;
+  return `${this.name} is playing with ${this.favoriteToy}`;
 }
+
 const ben = new Baby("Ben", 1, "puzzle"); 
+const amy = new Baby("Amy", 2, "fire truck"); 
+
+console.log('Task 3:', ben.favoriteToy);
+console.log(ben.play());
+console.log(amy.play());
+
+
 
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+    these four principles help the developer determine what gets "this"
+  1. Global Binding - when in the global scope the value of "this" will be the window/console object
+  2. Implicit Binding - whenever a function is called by a preceeding dot, the object left of the dot get the "this"
+  3. New Binding - whenever a constructor function is used, "this" refers to the specific instance of the object that is created and returned by the constructor function.
+  4. Explicit Binding - whenever JavaScript's "call" or "apply" method is used, this is explicitly defined.
 */
 
 
